@@ -1,6 +1,7 @@
 from flask import Flask
 from .database import init_db
 from .models import User
+from .models import Comment
 from flask_restful import Api, Resource, reqparse
 from flask_sqlalchemy import SQLAlchemy
 
