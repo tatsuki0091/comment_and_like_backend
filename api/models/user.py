@@ -1,6 +1,8 @@
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from api.database import db, ma
+from .comment import Comment
+from .like import Like
 
 class User(db.Model):
 
@@ -13,16 +15,16 @@ class User(db.Model):
     password = db.Column(db.String(250), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
+    like = db.relationship(Like, backref='users', uselist=False)
+    comment = db.relationship(Comment, backref='users', uselist=False)
 
-    def __init__(self, name, email, password, is_admin):
-        self.name = name
+    def __init__(self, email, password):
         self.email = email
         self.set_password(password)
-        self.is_admin = is_admin
 
     # Save password wifh hash
-    def set_password(self, password):
-        self.password = generate_password_hash(password)
+    # def set_password(self, password):
+    #     self.password = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
