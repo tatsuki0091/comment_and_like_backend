@@ -12,8 +12,8 @@ def login():
     data = request.data.decode('utf-8')
     email = request.json['email']
     password = request.json['password']
-    # result = User.query.filter((User.email == email) | (User.password == password)).all()
-    result = User.query.all()
+    result = User.query.filter((User.email == email) | (User.password == password)).all()
+    print(result)
 
     res = {
         'message': 'rootです'

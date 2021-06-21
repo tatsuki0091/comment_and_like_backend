@@ -14,3 +14,11 @@ from flask import Flask, Response, request, jsonify
 #     return app
 # app = create_app()
 
+def create_app():
+    app = Flask(__name__)
+    CORS(app, origins=["http://localhost:3000/*"])
+    app.config['CORS_HEADERS'] = 'Content-Type'
+    app.config.from_object('comment_and_like.config.Config')
+    init_db(app)
+    return app
+app = create_app()
