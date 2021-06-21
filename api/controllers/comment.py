@@ -1,13 +1,20 @@
 from flask import Flask, Response, request, Blueprint, jsonify
 
 # To call method in this class
-postComment = Blueprint('comment', __name__, url_prefix='/')
+comment = Blueprint('comment', __name__, url_prefix='/')
 
-@postComment.route('/', methods=['POST'])
+@comment.route('/api/comment', methods=['POST', 'GET'])
 def postComment():
+    if request.method == 'POST':
+        res = {
+            'message': 'post'
+        }
 
-    res = {
-        'message': 'comment'
-    }
+        return jsonify(res), 200
+    else:
+        res = {
+            'message': 'get'
+        }
 
-    return jsonify(res), 200
+        return jsonify(res), 200
+

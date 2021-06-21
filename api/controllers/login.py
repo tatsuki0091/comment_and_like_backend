@@ -9,14 +9,21 @@ loginAuth = Blueprint('login', __name__, url_prefix='/')
 
 @loginAuth.route('/api/login', methods=['POST'])
 def login():
-    data = request.data.decode('utf-8')
+    # Get user info from request
     email = request.json['email']
     password = request.json['password']
-    result = User.query.filter((User.email == email) | (User.password == password)).all()
+
+    # Select user info
+    result = User.query.filter((User.email == email) | (User.password == password)).first()
     print(result)
+    # Set email address to return
+    if result is not None:
+        res = {
+            'id': result.id,
+            'email': result.email
+        }
+    else:
+        res = {}
 
-    res = {
-        'message': 'rootです'
-    }
-
+    # return email address as a JASON
     return jsonify(res), 200
