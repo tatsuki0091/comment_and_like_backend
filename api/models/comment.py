@@ -31,11 +31,8 @@ class Comment(db.Model):
         except Exception as e:
             return e
 
-
-
 class CommentSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         # Apporopriate model properties for all schima
         model = Comment
-
 

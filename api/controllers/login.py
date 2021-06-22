@@ -15,7 +15,6 @@ def login():
 
     # Select user info
     result = User.query.filter((User.email == email) | (User.password == password)).first()
-    print(result)
     # Set email address to return
     if result is not None:
         res = {
