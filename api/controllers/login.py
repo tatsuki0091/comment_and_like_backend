@@ -14,7 +14,7 @@ def login():
     password = request.json['password']
 
     # Select user info
-    result = User.query.filter((User.email == email) | (User.password == password)).first()
+    result = User.query.filter((User.email == email) & (User.password == password)).first()
     # Set email address to return
     if result is not None:
         res = {

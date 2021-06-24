@@ -2,6 +2,7 @@ from flask_cors import CORS
 from api.database import init_db
 from api.controllers.login import loginAuth
 from api.controllers.comment import handleComment
+from api.controllers.like import handleIsFavorite
 from api.controllers.like import handleLike
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
@@ -11,6 +12,7 @@ app = Flask(__name__)
 app.register_blueprint(loginAuth)
 app.register_blueprint(handleComment)
 app.register_blueprint(handleLike)
+app.register_blueprint(handleIsFavorite)
 CORS(app, origins=["http://localhost:3000*"])
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:admin@127.0.0.1:5432/buddytree'
