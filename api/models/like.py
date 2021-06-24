@@ -17,6 +17,18 @@ class Like(db.Model):
         self.user_id = user_id
         self.comment_id = comment_id
 
+    def registerLike(like):
+        record = Like(
+            user_id=like['user_id'],
+            comment_id=like['comment_id'],
+        )
+        try:
+            db.session.add(record)
+            db.session.commit()
+            return record
+        except Exception as e:
+            return e
+
 class LikeSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         # Apporopriate model properties for all schima

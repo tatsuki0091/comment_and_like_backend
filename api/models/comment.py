@@ -36,3 +36,5 @@ class CommentSchema(ma.SQLAlchemyAutoSchema):
         # Apporopriate model properties for all schima
         model = Comment
 
+        fields = ("id", "user_id", "text", "created_at", "updated_at")
+

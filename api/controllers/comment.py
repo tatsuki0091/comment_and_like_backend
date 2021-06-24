@@ -10,18 +10,13 @@ def comment():
         # Register a comment
         comment_result = Comment.registerComment(request.json)
         res = {
-            'code': 200,
             'user_id': comment_result.user_id,
             'text': comment_result.text,
         }
-        return jsonify(res), 200
+        return res, 200
     else:
         # Select cpmments
         results = Comment.query.all()
-        res = {
-            'code': 200,
-            'comments': CommentSchema(many=True).dump(results)
-        }
-
-        return jsonify(res), 200
+        # return comments
+        return jsonify(CommentSchema(many=True).dump(results)), 200
 
