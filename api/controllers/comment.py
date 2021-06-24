@@ -1,24 +1,22 @@
-from flask import Flask, Response, request, Blueprint, jsonify
+from flask import Flask, request, Blueprint, jsonify
 from api.models import Comment, CommentSchema
 
 # To call method in this class
-comment = Blueprint('comment', __name__, url_prefix='/')
+handleComment = Blueprint('comment', __name__, url_prefix='/')
 
-@comment.route('/api/comment', methods=['POST', 'GET'])
-def postComment():
+@handleComment.route('/api/comment', methods=['POST', 'GET'])
+def comment():
     if request.method == 'POST':
+        # Register a comment
         comment_result = Comment.registerComment(request.json)
-        print(comment_result)
         res = {
-            'code': 200,
             'user_id': comment_result.user_id,
             'text': comment_result.text,
         }
-        return jsonify(res), 200
+        return res, 200
     else:
-        res = {
-            'message': 'get'
-        }
-
-        return jsonify(res), 200
+        # Select cpmments
+        results = Comment.query.all()
+        # return comments
+        return jsonify(CommentSchema(many=True).dump(results)), 200
 
