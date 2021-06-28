@@ -24,8 +24,13 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 init_db(app)
 db = SQLAlchemy(app)
 
+
+@app.route('/')
+def index():
+    return 'Hello World!'
+
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")
 
 
 # if __name__ == '__main__':

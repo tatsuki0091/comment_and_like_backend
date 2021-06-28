@@ -1,1 +1,1 @@
-web: gunicorn app:comment_and_like
+web: gunicorn api:app --log-file=-
