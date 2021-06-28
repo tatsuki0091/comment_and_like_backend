@@ -34,7 +34,7 @@ class Comment(db.Model):
 
     def selectCommentsAndLikes(self):
         results = db.session.query(Comment, func.count(Like.comment_id))\
-            .outerjoin(Like, Comment.id == Like.comment_id).group_by(Comment.id).all()
+            .outerjoin(Like, Comment.id == Like.comment_id).group_by(Comment.id).order_by(Comment.id).all()
         return results
 
 

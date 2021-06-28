@@ -40,9 +40,9 @@ class Like(db.Model):
         except Exception as e:
             return e
 
-    def countLike(self):
-        results = db.session.query(Like.comment_id, func.count(Like.comment_id)).group_by(Like.comment_id).all()
-        return results
+    # def countLike(self):
+    #     results = db.session.query(Like.comment_id, func.count(Like.comment_id)).group_by(Like.comment_id).all()
+    #     return results
 
 class LikeSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
