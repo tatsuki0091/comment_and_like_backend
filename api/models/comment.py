@@ -1,6 +1,7 @@
 from datetime import datetime
 from api.database import db, ma
 from .like import Like
+from sqlalchemy import func
 
 class Comment(db.Model):
 
@@ -30,6 +31,12 @@ class Comment(db.Model):
             return record
         except Exception as e:
             return e
+
+    def selectCommentsAndLikes(self):
+        results = db.session.query(Comment, func.count(Like.comment_id))\
+            .outerjoin(Like, Comment.id == Like.comment_id).group_by(Comment.id).all()
+        return results
+
 
 class CommentSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
