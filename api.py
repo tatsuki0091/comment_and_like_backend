@@ -26,7 +26,7 @@ init_db(app)
 db = SQLAlchemy(app)
 
 
-@app.route('/')
+@app.route('/hello/')
 def index():
     return 'Hello World!'
 
