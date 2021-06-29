@@ -5,8 +5,9 @@ from api.controllers.comment import handleGetComment, handlePostComment
 from api.controllers.like import handleIsFavorite, handleLikeCount, handleLike
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+import os
 
-app = Flask(__name__, static_url_path='/')
+app = Flask(__name__)
 
 app.register_blueprint(loginAuth)
 app.register_blueprint(handleGetComment)
@@ -30,7 +31,8 @@ def index():
     return 'Hello World!'
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
 
 # if __name__ == '__main__':
