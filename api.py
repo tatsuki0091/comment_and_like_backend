@@ -7,6 +7,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 import os
 
+
+
+
+@app.route('/hello/')
+def index():
+    return 'Hello World!'
+
+
 app = Flask(__name__)
 
 app.register_blueprint(loginAuth)
@@ -24,11 +32,6 @@ app.config.from_object('config.Config')
 app.config['CORS_HEADERS'] = 'Content-Type'
 init_db(app)
 db = SQLAlchemy(app)
-
-
-@app.route('/hello/')
-def index():
-    return 'Hello World!'
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
