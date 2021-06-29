@@ -1,7 +1,7 @@
 alembic==1.6.5
 aniso8601==9.0.1
 click==7.1.2
-Flask==1.1.2
+Flask==2.0.1
 Flask-Cors==3.0.7
 flask-marshmallow==0.14.0
 Flask-Migrate==3.0.1
