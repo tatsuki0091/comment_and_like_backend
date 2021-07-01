@@ -24,7 +24,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 init_db(app)
 db = SQLAlchemy(app)
 
-CORS(app, support_credentials=True)
+CORS(app, origins=["https://mysterious-citadel-26921.herokuapp.com*", "http://localhost:3000*"])
 # CORS(app, origins=["http://localhost:3000*"])
 
 if __name__ == "__main__":

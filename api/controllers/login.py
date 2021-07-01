@@ -1,12 +1,10 @@
 from flask import Flask, Response, request, Blueprint, jsonify
 from api.models.user import User
-from flask_cors import cross_origin
 
 # To call method in this class
 loginAuth = Blueprint('login', __name__, url_prefix='/')
 
 @loginAuth.route('/api/login', methods=['POST'])
-@cross_origin(supports_credentials=True)
 def login():
     # Get user info from request
     email = request.json['email']
