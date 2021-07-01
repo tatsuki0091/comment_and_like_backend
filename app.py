@@ -27,11 +27,6 @@ db = SQLAlchemy(app)
 CORS(app, origins=["https://mysterious-citadel-26921.herokuapp.com*", "http://localhost:3000*"])
 # CORS(app, origins=["http://localhost:3000*"])
 
-@app.route('/hello/')
-def index():
-    return 'Hello World!'
-
-
 if __name__ == "__main__":
     app.run()
 
