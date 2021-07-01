@@ -21,7 +21,7 @@ app.register_blueprint(handleLike)
 app.register_blueprint(handleIsFavorite)
 app.register_blueprint(handleLikeCount)
 
-CORS(app, origins=["https://mysterious-citadel-26921.herokuapp.com*"])
+CORS(app, origins=["https://mysterious-citadel-26921.herokuapp.com", "http://localhost:3000"])
 # CORS(app, origins=["http://localhost:3000*"])
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:admin@127.0.0.1:5432/buddytree'
