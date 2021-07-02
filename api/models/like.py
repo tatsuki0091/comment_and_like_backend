@@ -1,7 +1,5 @@
 from datetime import datetime
 from api.database import db, ma
-from sqlalchemy import func
-
 
 class Like(db.Model):
 
@@ -39,10 +37,6 @@ class Like(db.Model):
             return like
         except Exception as e:
             return e
-
-    # def countLike(self):
-    #     results = db.session.query(Like.comment_id, func.count(Like.comment_id)).group_by(Like.comment_id).all()
-    #     return results
 
 class LikeSchema(ma.SQLAlchemyAutoSchema):
     class Meta:

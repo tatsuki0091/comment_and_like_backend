@@ -6,7 +6,6 @@ from api.models import Like
 handleGetComment = Blueprint('getCcomment', __name__, url_prefix='/')
 handlePostComment = Blueprint('postComment', __name__, url_prefix='/')
 
-
 @handlePostComment.route('/api/post_comment', methods=['POST'])
 def postComment():
     # Register a comment

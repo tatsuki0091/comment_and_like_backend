@@ -26,27 +26,10 @@ def like():
 
         return jsonify(LikeSchema().dump(result)), 200
     else:
-        # res = {
-        #     'user_id': like_result.user_id,
-        #     'comment_id': like_result.comment_id,
-        # }
-        return "ddd", 200
+        return "error", 200
 
 @handleIsFavorite.route('/api/is_favorite/<user_id>/<comment_id>', methods=['GET'])
-# @handleIsFavorite.route('/<user_id>/<comment_id>')
 def like(user_id, comment_id):
     # Get like info
     result = Like.query.filter((Like.user_id == user_id) & (Like.comment_id == comment_id)).first()
     return jsonify(LikeSchema().dump(result)), 200
-
-@handleLikeCount.route('/api/count_like', methods=['GET'])
-def countLike():
-    results = Like.countLike(self=None)
-    res = []
-    for id, count in results:
-        dic = {
-            'comment_id': id,
-            'count': count,
-        }
-        res.append(dic)
-    return jsonify(res), 200
