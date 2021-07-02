@@ -1,5 +1,5 @@
 from datetime import datetime
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 from api.database import db, ma
 from .comment import Comment
 from .like import Like
@@ -21,10 +21,6 @@ class User(db.Model):
     def __init__(self, email, password):
         self.email = email
         self.set_password(password)
-
-    # Save password wifh hash
-    # def set_password(self, password):
-    #     self.password = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
