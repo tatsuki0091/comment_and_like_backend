@@ -1,4 +1,4 @@
-from flask import Flask, Response, request, Blueprint, jsonify
+from flask import Flask, request, Blueprint, jsonify
 from api.models.user import User
 
 # To call method in this class

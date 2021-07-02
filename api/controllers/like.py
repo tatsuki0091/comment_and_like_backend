@@ -10,8 +10,6 @@ def like():
     if request.method == 'POST':
         # Register a comment
         like_result = Like.registerLike(request.json)
-        # likeInfo = Like.query.filter((Like.user_id == like_result.user_id) & (
-        #             Like.comment_id == like_result.comment_id)).first()
         res = {
             'user_id': like_result.user_id,
             'comment_id': like_result.comment_id,

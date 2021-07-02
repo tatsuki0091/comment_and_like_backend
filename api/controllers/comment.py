@@ -18,7 +18,6 @@ def postComment():
 @handleGetComment.route('/api/get_comment/<user_id>', methods=['GET'])
 def getCcomment(user_id):
     # Select cpmments
-    # results = Comment.query.all()
     results = Comment.selectCommentsAndLikes(self=None)
     likeEesults = Like.query.filter((Like.user_id == user_id)).order_by(Like.comment_id).all()
     array = []
