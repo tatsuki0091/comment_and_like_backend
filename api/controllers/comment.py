@@ -34,8 +34,7 @@ def getCcomment(user_id):
             if int(likeResult.user_id) == int(user_id) and int(likeResult.comment_id) == int(result[0].id):
                 dic['liked'] = True
                 break
-        else:
-            dic['liked'] = False
+
         array.append(dic)
     # return comments
     return jsonify(array), 200
