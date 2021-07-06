@@ -19,7 +19,7 @@ def postComment():
 def getCcomment(user_id):
     # Select cpmments
     results = Comment.selectCommentsAndLikes(self=None)
-    likeEesults = Like.query.filter((Like.user_id == user_id)).order_by(Like.comment_id).all()
+    likeResults = Like.query.filter((Like.user_id == user_id)).order_by(Like.comment_id).all()
     array = []
     for result in results:
         dic = {
@@ -30,10 +30,11 @@ def getCcomment(user_id):
             'updated_at': result[0].updated_at,
             'count': result[1],
         }
-        for likeEesult in likeEesults:
-            if likeEesult.user_id == result[0].user_id and likeEesult.comment_id == result[0].id:
+        for likeResult in likeResults:
+            if int(likeResult.user_id) == int(user_id) and int(likeResult.comment_id) == int(result[0].id):
                 dic['liked'] = True
-        if 'liked' not in dic:
+                break
+        else:
             dic['liked'] = False
         array.append(dic)
     # return comments
